@@ -1,79 +1,93 @@
+# ─────────────────────────────────────────────────────────────
+# Purrlington Island — root .gitignore
+# ─────────────────────────────────────────────────────────────
+
+# === Secrets / environment (NEVER commit real values — RULES.md) ===
 .env
-.DS_Store
-
-# Gradle
-.gradle/
-build/
-out/
-
-# IntelliJ IDEA
-.idea/
-*.iml
-
-# VS Code
-.vscode/
-
-# Kotlin
-.kotlin/
-
-# Logs
-logs/
-*.log
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Environment files
-.env
-
-# Application secrets
+.env.*
+*.env
+!.env.example
+!**/.env.example
+.mcp.json
+!.mcp.json.example
 application-local.yaml
 application-local.yml
+*.pem
+*.key
+secrets.*
 
-# Generated files
-generated/
-tmp/
+# === Local-only: Claude tooling & internal AI context docs ===
+# (kept local — not uploaded to the repo / cloud). Anchored to repo root.
+/.claude/
+/docs/
 
-# Java
-*.class
-
-# Ktor
-fat.jar
-
-# Maven (if accidentally added)
-target/
-
-# Database files
-*.db
-*.mv.db
-*.trace.db
-
-# H2 database
-*.h2.db
-
-# PostgreSQL local dumps
-*.dump
-
-# Coverage
+# === Node / TypeScript (frontend, hotel, broadcast) ===
+node_modules/
+dist/
+build/
+.next/
+out/
 coverage/
-jacoco.exec
+*.tsbuildinfo
+.pnpm-store/
+.npm/
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
 
-# Test reports
-test-results/
-reports/
+# === Python (airport, parrot) ===
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+instance/
 
-# Package archives
+# === Go (gateway) ===
+/gateway/gateway
+/gateway/gateway.exe
+*.exe
+*.out
+
+# === Kotlin / Gradle / Java (beach) ===
+.gradle/
+.kotlin/
+*.class
+fat.jar
 *.jar
+!**/gradle/wrapper/gradle-wrapper.jar
 *.war
 *.ear
-
-# Crash logs
+target/
 hs_err_pid*
 replay_pid*
-node_modules
-dist
-.env
-npm-debug.log
-.git
-.vscode
+
+# === Prisma (hotel) ===
+generated/
+
+# === Databases / dumps (airport SQLite, local PG dumps) ===
+*.db
+*.sqlite
+*.sqlite3
+*.mv.db
+*.trace.db
+*.h2.db
+*.dump
+
+# === Logs / reports / coverage ===
+logs/
+*.log
+test-results/
+reports/
+jacoco.exec
+tmp/
+
+# === IDE / OS ===
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
